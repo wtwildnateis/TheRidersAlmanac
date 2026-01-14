@@ -1,0 +1,227 @@
+.post-page{ background:var(--page-bg); color:var(--ink); min-height:100vh; }
+.post-wrap{
+  max-width:1100px; margin:18px auto 96px; padding:18px;
+  border:1px solid var(--ring); border-radius:var(--radius);
+  background:var(--panel); box-shadow:var(--shadow);
+}
+
+/* --- Header (back + title) -------------------------------------------- */
+.post-header{
+  display:grid; grid-template-columns:auto 1fr; align-items:baseline; gap:8px;
+  margin-bottom:10px;
+}
+.post-h1{
+  margin:0 0 4px; line-height:1.05;
+  font-size:clamp(28px,3.6vw,40px); font-weight:900; letter-spacing:.01em; color:var(--ink);
+}
+/* raise back button a touch */
+.post-header > .ra-pillbtn--icon{ transform:translateY(-4px) !important; line-height:1; padding:0; }
+.post-header > .ra-pillbtn--icon svg{ display:block; }
+
+/* --- Top row: author • time | tags | actions -------------------------- */
+.post-topRow{
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:8px;
+  margin-top:4px;
+}
+.post-metaL{ display:inline-flex; align-items:center; gap:10px; min-width:0; }
+.post-avatar{
+  margin-left: 35px; width:35px; height:35px; border-radius:999px; background:#111815;
+  border:1px solid var(--ring); display:grid; place-items:center; font-weight:800; color:var(--ink);
+}
+.post-author{ color:var(--ink); font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.post-time{ color:var(--ink-dim); }
+.post-dot{ opacity:.5; }
+
+/* tags */
+.post-tagsRow{ display:flex; flex-wrap:wrap; gap:8px; min-width:0; }
+.post-chip{
+  padding:5px 10px; border-radius:999px; line-height:1; font-size:11px; font-weight:800;
+  border:1px solid rgba(234,170,59,.28); background:rgba(234,170,59,.08); color:#ea9e3b;
+}
+
+/* actions */
+.post-actions{ display:inline-flex; align-items:center; gap:8px; }
+.ra-pillbtn{
+  --h: 52px;                 /* was 42px */
+  height: var(--h);
+  line-height: var(--h);
+  padding: 0 20px;           /* wider */
+  font-size: 15.5px;         /* larger text */
+  border-radius: 14px;       /* slightly rounder */
+}
+
+/* Keep icon button perfectly square and larger too */
+.ra-pillbtn--icon{
+  width: var(--h);
+  min-width: var(--h);
+  padding: 0;
+}
+
+/* Make the icon inside feel proportional */
+.ra-pillbtn--icon svg{
+  width: 20px;
+  height: 20px;
+}
+
+/* Optional: make the text button label look crisper when larger */
+.ra-pillbtn{ font-weight: 850; letter-spacing: .015em; }
+.ra-pillbtn:hover{ background:rgba(166,217,138,.08); border-color:var(--accent); }
+.ra-pillbtn--primary{ background:#0b0f0c; }
+.ra-pillbtn--primary:hover{ background:var(--accent); color:#06251a; border-color:rgba(0,0,0,.25); }
+
+/* --- Body -------------------------------------------------------------- */
+.prose-dark{
+  border:1px solid var(--ring); background:#0f1311; border-radius:12px;
+  padding:16px 18px; box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+.prose-dark p{ margin:0 0 10px; line-height:1.62; color:var(--ink); }
+
+.section-break{ height:1px; background:rgba(255,255,255,.06); margin:14px 0; }
+
+/* --- Media (small thumbs) --------------------------------------------- */
+.post-media{ margin-top:14px; }
+.section-title{
+  margin:0 0 10px 2px; color:var(--ink-dim);
+  font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+}
+.media-grid{
+  display:grid; gap:8px;
+  grid-template-columns:repeat(auto-fill, minmax(68px, 1fr)); /* tweak size here */
+}
+.media-tile{
+  border:1px solid var(--ring); background:#0f1311; border-radius:12px;
+  overflow:hidden; position:relative; box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+.media-tile img{ width:100%; height:100%; aspect-ratio:1/1; object-fit:cover; display:block; }
+.media-tile::after{ content:""; position:absolute; inset:0; box-shadow:inset 0 0 0 0 rgba(0,0,0,0); transition:box-shadow .15s ease; }
+.media-tile:hover::after{ box-shadow:inset 0 0 0 2px var(--accent); }
+
+/* --- Comments ---------------------------------------------------------- */
+.post-comments{ margin-top:14px; }
+.comment-list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+.comment-item{
+  display:grid; grid-template-columns:40px 1fr; gap:10px;
+  border:1px solid var(--ring); background:#0f1311; border-radius:12px; padding:10px 12px;
+}
+.c-avatar{
+  width:40px; height:40px; border-radius:999px; background:#111815; border:1px solid var(--ring);
+  display:grid; place-items:center; font-weight:800;
+}
+.c-head{ display:inline-flex; gap:8px; color:var(--ink-dim); }
+.c-author{ color:var(--ink); font-weight:700; }
+.c-body{ color:var(--ink); margin-top:2px; }
+
+/* composer */
+.comment-composer{
+  margin-top:10px; display:grid; grid-template-columns:1fr auto; gap:8px;
+  position:sticky; bottom:0; padding-top:8px;
+  background:linear-gradient(180deg, transparent, rgba(10,13,10,.92));
+}
+.composer-input{
+  height:42px; border:1px solid var(--ring); border-radius:12px;
+  background:#0b0f0c; color:var(--ink); padding:0 12px; outline:none;
+}
+
+/* locked note */
+.locked-note{ color:var(--ink-dim); font-size:14px; padding:10px 2px; }
+
+/* --- Admin drawer tweaks ---------------------------------------------- */
+.post-admin .filters-panel__head{ display:flex; align-items:center; justify-content:space-between; }
+.post-admin .tool-row{ display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px dashed var(--ring); }
+.status-dot{ font-weight:800; }
+.status-dot.is-green{ color:#8AE79A; }
+.status-dot.is-red{ color:#ff7575; }
+.tool-actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+
+/* --- Responsive -------------------------------------------------------- */
+@media (max-width:720px){
+  .post-topRow{ grid-template-columns:1fr; align-items:start; gap:10px; }
+  .post-actions{ justify-content:flex-start; }
+}
+
+.post-actions .ra-pillbtn{
+  min-height: 42px;        /* was ~42 */
+  padding: 10px 20px;      /* more internal space */
+  line-height: 1;          /* avoid squish from line-height=height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon pill: bigger housing, same icon size */
+.post-actions .ra-pillbtn--icon{
+  width: 42px;             /* larger outer circle/rounded box */
+  height: 42px;
+  padding: 0;              /* no extra scaling from padding */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.post-actions .ra-pillbtn--icon svg{
+  width: 20px;             /* keep logo size fixed */
+  height: 20px;
+}
+
+.ra-pillbtn--xs{
+  --h: 32px;                 /* small round */
+  height: var(--h);
+  width: var(--h);
+  min-width: var(--h);
+  line-height: 1;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+}
+
+/* danger variant (reuse your dark theme) */
+.ra-pillbtn--danger{
+  background:#0b0f0c;
+  color:#ff6b6b;
+  border:1px solid rgba(255,107,107,.35);
+}
+.ra-pillbtn--danger:hover{
+  background:rgba(255,107,107,.12);
+  border-color:#ff6b6b;
+}
+
+/* edit drawer inputs */
+.fld .lbl{ color:var(--ink-dim); font-size:12px; letter-spacing:.06em; text-transform:uppercase; margin:0 0 6px 2px; }
+.inp{ width:100%; border:1px solid var(--ring); border-radius:12px; background:#0b0f0c; color:var(--ink); padding:12px 14px; outline:none; }
+.inp:focus{ border-color:var(--accent); box-shadow:0 0 0 3px var(--ring); }
+
+/* tag pill toggle */
+.post-chip.is-on{ background:rgba(234,170,59,.16); border-color:#eaaa3b; }
+
+/* composer textarea wraps + auto-grow */
+.composer-input{
+  resize: none;
+  overflow: hidden;              /* let JS expand instead of scrollbar */
+  line-height: 1.4;
+  white-space: pre-wrap;         /* keep user line breaks */
+  word-break: break-word;
+  overflow-wrap: anywhere;       /* break very long strings */
+}
+
+/* safety: wrap long words in post body and comments too */
+.prose-dark, .prose-dark p, .c-body{
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.c-body{ word-break: break-word; overflow-wrap: anywhere; }
+
+
+/* composer sits under the last comment; no overlay */
+.comment-composer{
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: stretch;
+  position: static;                 /* was sticky */
+  background: transparent;          /* remove gradient overlay */
+  padding-top: 0;                    /* no extra pad needed */
+}
+.post-comments{ padding-bottom: 16px; }

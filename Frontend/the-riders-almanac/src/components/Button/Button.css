@@ -1,0 +1,82 @@
+.custom-button{
+  --btn-fg: var(--accent, #a6d98a);
+  --btn-bg: rgba(255,255,255,.04);
+  --btn-ring: var(--ring, rgba(166,217,138,.18));
+  --btn-ring-outer: rgba(166,217,138,.10);
+
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--btn-ring);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 800;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition:
+    transform .06s ease,
+    background .12s ease,
+    border-color .12s ease,
+    box-shadow .12s ease,
+    color .12s ease,
+    opacity .12s ease;
+  outline: none; 
+}
+
+.custom-button:hover{
+  background: rgba(166,217,138,.10);
+  border-color: var(--accent, #a6d98a);
+  box-shadow: 0 0 0 3px var(--btn-ring-outer);
+}
+
+.custom-button:active{
+  transform: translateY(1px);
+}
+
+/* Keyboard focus */
+.custom-button:focus-visible{
+  box-shadow: 0 0 0 3px var(--btn-ring-outer), 0 0 0 1px var(--accent, #a6d98a) inset;
+}
+
+/* Disabled */
+.custom-button:disabled,
+.custom-button[aria-disabled="true"]{
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.custom-button--primary{
+  --btn-fg: #0e1311;
+  --btn-bg: linear-gradient(180deg, rgba(166,217,138,.22), rgba(166,217,138,.14));
+  border-color: var(--accent, #a6d98a);
+}
+.custom-button--primary:hover{
+  --btn-bg: linear-gradient(180deg, rgba(166,217,138,.28), rgba(166,217,138,.18));
+}
+
+.custom-button--danger{
+  --btn-fg: #ff9b9b;
+  --btn-bg: rgba(255,99,99,.06);
+  border-color: rgba(255,99,99,.35);
+}
+.custom-button--danger:hover{
+  --btn-bg: rgba(255,99,99,.10);
+  border-color: rgba(255,99,99,.55);
+  box-shadow: 0 0 0 3px rgba(255,99,99,.15);
+}
+
+.custom-button--icon{
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.custom-button--sm{
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+}
